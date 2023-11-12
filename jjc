@@ -166,6 +166,154 @@ end)
 
 end)
 
+local Tab5 = Window:NewTab("Orbs")
+local Section = Tab5:NewSection("Orbs Farm")
+
+Section:NewButton("Tp to CurseOrb", "ButtonInfo", function()
+    local player = game.Players.LocalPlayer
+local workspace = game.Workspace
+
+local CurseSpinOrb = workspace:FindFirstChild("CurseSpinOrb")
+
+if CurseSpinOrb then
+    local finger = CurseSpinOrb:FindFirstChild("CurseSpinOrb")
+
+    if finger then
+        
+        player.Character:SetPrimaryPartCFrame(finger.CFrame)
+
+        
+        local UserInputService = game:GetService("UserInputService")
+        local key = Enum.KeyCode.C
+
+        local keyDownEvent = Instance.new("InputObjectEvent")
+        keyDownEvent.Name = "InputBegan"
+        keyDownEvent.Parent = game
+
+        keyDownEvent.InputBegan:Connect(function(input)
+            if input.KeyCode == key then
+                wait(8)  
+            end
+        end)
+
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+    else
+        print("CurseSpinOrb not found.")
+    end
+else
+    print("CurseSpinOrb not found.")
+end
+
+end)
+
+
+
+
+Section:NewButton("Tp to ClanOrb", "ButtonInfo", function()
+    local player = game.Players.LocalPlayer
+local workspace = game.Workspace
+
+local ClanSpinOrb = workspace:FindFirstChild("ClanSpinOrb")
+
+if CurseSpinOrb then
+    local ClanSpinOrb = ClanSpinOrb:FindFirstChild("ClanSpinOrb")
+
+    if ClanSpinOrb then
+        
+        player.Character:SetPrimaryPartCFrame(ClanSpinOrb.CFrame)
+
+        
+        local UserInputService = game:GetService("UserInputService")
+        local key = Enum.KeyCode.C
+
+        local keyDownEvent = Instance.new("InputObjectEvent")
+        keyDownEvent.Name = "InputBegan"
+        keyDownEvent.Parent = game
+
+        keyDownEvent.InputBegan:Connect(function(input)
+            if input.KeyCode == key then
+                wait(8)  
+            end
+        end)
+
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+    else
+        print("ClanSpinOrb not found.")
+    end
+else
+    print("ClanSpinOrb not found.")
+end
+
+end)
+
+
+Section:NewButton("Tp to MiscOrb", "ButtonInfo", function()
+    local player = game.Players.LocalPlayer
+local workspace = game.Workspace
+
+local MiscOrb = workspace:FindFirstChild("MiscOrb")
+
+if MiscOrb then
+    local MiscOrb = MiscOrb:FindFirstChild("MiscOrb")
+
+    if MiscOrb then
+        
+        player.Character:SetPrimaryPartCFrame(MiscOrb.CFrame)
+
+        
+        local UserInputService = game:GetService("UserInputService")
+        local key = Enum.KeyCode.C
+
+        local keyDownEvent = Instance.new("InputObjectEvent")
+        keyDownEvent.Name = "InputBegan"
+        keyDownEvent.Parent = game
+
+        keyDownEvent.InputBegan:Connect(function(input)
+            if input.KeyCode == key then
+                wait(8)  
+            end
+        end)
+
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+    else
+        print("MiscOrb not found.")
+    end
+else
+    print("MiscOrb not found.")
+end
+
+end)
+
 
 
 local Tab4 = Window:NewTab("Server")

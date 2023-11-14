@@ -32,7 +32,7 @@ end)
 
 Section:NewButton("Attack Dummy", "Attacks the dummy", function()
     while true do
-        task.wait(0)
+        wait()
 
         local args = {
             [1] = {
@@ -50,11 +50,53 @@ end)
 
 Section:NewButton("Auto Stamina", "ButtonInfo", function()
     while true do
-        wait(2)
+        wait(0)
 game:GetService("Players").LocalPlayer.Character.Client.Server.RewardStamina:FireServer()
 
    end
 end)
+
+
+
+Section:NewButton("Auto skill 1 Kashimo", "ButtonInfo", function()
+    while true do
+     wait(1)
+local args = {
+    [1] = {
+        ["Character"] = game:GetService("Players").LocalPlayer.Character,
+        ["Action"] = "CursedTechnique",
+        ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats,
+        ["Technique"] = "KashimoVessel",
+        ["Skill"] = "ThunderStrike",
+        ["Aim"] = CFrame.new(359.52093505859375, 15.388955116271973, 699.6347045898438) * CFrame.Angles(-0, 0, -0)
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+  end
+end)
+
+
+
+
+Section:NewButton("Auto Skill 2 Kashimo", "ButtonInfo", function()
+    while true do
+        wait(1)
+   local args = {
+       [1] = {
+           ["Character"] = game:GetService("Players").LocalPlayer.Character,
+           ["Action"] = "CursedTechnique",
+           ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats,
+           ["Technique"] = "KashimoVessel",
+           ["Skill"] = "ThunderFlash",
+           ["Aim"] = CFrame.new(359.52093505859375, 15.388955116271973, 699.6347045898438) * CFrame.Angles(-0, 0, -0)
+       }
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+     end
+end)
+
 
 
 Section:NewButton("Auto Skill1 Hr only!", "ButtonInfo", function()
@@ -314,6 +356,143 @@ end
 
 end)
 
+
+
+local Tab6 = Window:NewTab("Items")
+local Section = Tab6:NewSection("Items")
+
+Section:NewButton("Tp To Sukuna Finger", "ButtonInfo", function()
+    local player = game.Players.LocalPlayer
+local workspace = game.Workspace
+
+local vesselFinger = workspace:FindFirstChild("Vessel_Finger")
+
+if vesselFinger then
+    local finger = vesselFinger:FindFirstChild("Finger")
+
+    if finger then
+        
+        player.Character:SetPrimaryPartCFrame(finger.CFrame)
+
+        
+        local UserInputService = game:GetService("UserInputService")
+        local key = Enum.KeyCode.C
+
+        local keyDownEvent = Instance.new("InputObjectEvent")
+        keyDownEvent.Name = "InputBegan"
+        keyDownEvent.Parent = game
+
+        keyDownEvent.InputBegan:Connect(function(input)
+            if input.KeyCode == key then
+                wait(8)  
+            end
+        end)
+
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+    else
+        print("Finger not found inside Vessel_Finger.")
+    end
+else
+    print("Vessel_Finger not found in workspace.")
+end
+end)
+
+
+
+Section:NewButton("Tp to Kashimo Scroll ", "ButtonInfo", function()
+    local player = game.Players.LocalPlayer
+local workspace = game.Workspace
+
+local Kashimo_Scroll = workspace:FindFirstChild("Kashimo_Scroll")
+
+if Kashimo_Scroll then
+    local Center = Kashimo_Scroll:FindFirstChild("Center")
+
+    if Center then
+        
+        player.Character:SetPrimaryPartCFrame(Center.CFrame)
+
+        local UserInputService = game:GetService("UserInputService")
+        local key = Enum.KeyCode.C
+
+        local keyDownEvent = Instance.new("InputObjectEvent")
+        keyDownEvent.Name = "InputBegan"
+        keyDownEvent.Parent = game
+
+        keyDownEvent.InputBegan:Connect(function(input)
+            if input.KeyCode == key then
+                wait(8)
+            end
+        end)
+
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
+                keyDownEvent.InputBegan:Fire(input)
+            end
+        end)
+    else
+        print("scroll not found .")
+    end
+else
+    print("scroll not found .")
+end
+end)
+
+
+Section:NewButton("Tp to Yuta Ring", "ButtonInfo", function()
+    local player = game.Players.LocalPlayer
+local workspace = game.Workspace
+
+
+local engagementRingPath = "Engagement_Ring"
+local invisiblePartName = "InvisiblePart"
+
+
+local engagementRing = workspace:FindFirstChild(engagementRingPath)
+if engagementRing and engagementRing:IsA("Model") then
+    local invisiblePart = engagementRing:FindFirstChild(invisiblePartName)
+    if not invisiblePart then
+        invisiblePart = Instance.new("Part")
+        invisiblePart.Name = invisiblePartName
+        invisiblePart.Size = Vector3.new(5, 5, 5)  
+        invisiblePart.Transparency = 1  
+        invisiblePart.Anchored = true
+        invisiblePart.CanCollide = false
+
+        
+        invisiblePart.Position = engagementRing.PrimaryPart.Position + Vector3.new(0, 10, 0) -- Adjust the Y offset as needed
+
+        invisiblePart.Parent = engagementRing
+
+        
+        player.Character:SetPrimaryPartCFrame(invisiblePart.CFrame)
+
+        
+        wait(1)
+        invisiblePart:Destroy()
+    else
+        warn(invisiblePartName .. " already exists inside " .. engagementRingPath .. ".")
+    end
+else
+    warn(engagementRingPath .. " not found or not a Model in workspace.")
+end
+end)
 
 
 local Tab4 = Window:NewTab("Server")

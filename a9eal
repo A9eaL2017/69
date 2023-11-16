@@ -117,15 +117,7 @@ Section:NewButton("Auto Train", "ButtonInfo", function()
     while true do
         wait(0)
 
-local args = {
-    [1] = {
-        ["Character"] = game:GetService("Players").LocalPlayer.Character,
-        ["Action"] = "Endurance",
-        ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats
-    }
-}
-
-game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.T,false,game)
 
     end
 end)

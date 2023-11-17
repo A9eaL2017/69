@@ -1,7 +1,8 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("a9eal's", "Midnight")
+local Window = Library.CreateLib("a9eal's | https://discord.gg/KDTDWgMgXu | Join For Updates ", "Midnight")
 local Tab = Window:NewTab("auto farm")
 local Section = Tab:NewSection("farm")
+
 
 Section:NewButton("Teleport Behind Dummy", "Teleports behind the dummy", function()
     local player = game.Players.LocalPlayer
@@ -32,7 +33,7 @@ end)
 
 Section:NewButton("Attack Dummy", "Attacks the dummy", function()
     while true do
-        wait()
+        wait(0)
 
         local args = {
             [1] = {
@@ -100,9 +101,7 @@ end)
 
 
 
-
-
-Section:NewButton("Auto Cures Farm", "Put the skills on Z,X,C,V", function()
+Section:NewButton("Auto Curse Farm", "Put the skills on Z,X,C,V", function()
     while true do
         wait(0.1)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,game)

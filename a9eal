@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("a9eal's", "Midnight")
 local Tab = Window:NewTab("auto farm")
 local Section = Tab:NewSection("farm")
@@ -117,7 +117,15 @@ Section:NewButton("Auto Train", "ButtonInfo", function()
     while true do
         wait(0)
 
-game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.T,false,game)
+local args = {
+    [1] = {
+        ["Character"] = game:GetService("Players").LocalPlayer.Character,
+        ["Action"] = "Endurance",
+        ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
 
     end
 end)
@@ -452,6 +460,28 @@ Section:NewButton("server hop", "ButtonInfo", function()
     local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
 
 module:Teleport(game.PlaceId)
+end)
+
+
+Section:NewButton("Redeem Codes", "ButtonInfo", function()
+    local args = {
+        [1] = "Visits7M"
+    }
+    
+    game:GetService("Players").LocalPlayer.PlayerGui.Main_UI.Codes.Enter.CheckCode.EnterCode.RemoteEvent:FireServer(unpack(args))
+    
+    local args = {
+        [1] = "Rework2"
+    }
+    
+    game:GetService("Players").LocalPlayer.PlayerGui.Main_UI.Codes.Enter.CheckCode.EnterCode.RemoteEvent:FireServer(unpack(args))
+
+    local args = {
+        [1] = "Favs44K"
+    }
+    
+    game:GetService("Players").LocalPlayer.PlayerGui.Main_UI.Codes.Enter.CheckCode.EnterCode.RemoteEvent:FireServer(unpack(args))
+    
 end)
 
 

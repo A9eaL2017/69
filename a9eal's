@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("a9eal's | https://discord.gg/F8gHQ8PJPF | Join For Updates ! ", "Midnight")
+local Window = Library.CreateLib("a9eal's | https://discord.gg/  | Join For Updates ! ", "Midnight")
 local Tab = Window:NewTab("auto farm")
 local Section = Tab:NewSection("farm")
 
@@ -133,6 +133,40 @@ end
 function DisableScript2()
     print("Script disabled")
 end
+
+local Toggle15 = Section:NewToggle("Auto CE", "ToggleInfo", function(state)
+    scriptEnabled15 = state
+    if scriptEnabled15 then
+        EnableScript15()
+    else
+        DisableScript15()
+    end
+end)
+
+function EnableScript15()
+    while scriptEnabled15 do
+        wait(0)
+
+
+local args = {
+    [1] = {
+        ["Character"] = game:GetService("Players").LocalPlayer.Character,
+        ["Action"] = "Cursed_Energy",
+        ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+
+    end
+end
+
+
+function DisableScript15()
+    print("Script disabled")
+end
+
+
 
 
 local Toggle3 = Section:NewToggle("Auto Train", "ToggleInfo", function(state)
